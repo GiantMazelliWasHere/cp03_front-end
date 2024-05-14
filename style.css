@@ -1,0 +1,45 @@
+.main-section{
+    min-height: 100vh;
+    background-color: #0b0b0b;
+    color: #910e0e;
+}
+
+#chat-log{
+    width: 90%;
+    padding: 5vh;
+    margin: 20px auto;
+}
+
+.input-group{
+    margin-top: 50px;
+    padding: 0 1rem 1rem 1rem;
+}
+
+.message--sent{
+    text-align: right;
+    background-color: #c4b0b0;
+    padding: 0.5rem 1rem 0.5rem 1rem;
+    border-radius: 0.5rem;
+    margin-top: 20px;
+}
+
+.message--sent::before{
+    content: "Usuário";
+    font-size: 12px;
+}
+
+.message--received{
+    text-align: left;
+    margin-top: 20px;
+    background-color: #180037;
+    color: white;
+    padding: 0.5rem 1rem 0.5rem 1rem;
+    border-radius: 0.5rem;
+}
+
+.message--received::before{
+    content: "AlphaBot";
+    font-size: 12px;
+    background: none;
+    color: #910e0e;
+}
