@@ -1,9 +1,0 @@
-npm init -y
-
-add '"type": "module",' to package.json depois de main
-
-npm install openai
-
-npm install express body-parser cors
-
-add '"type": "module",' to package.json
