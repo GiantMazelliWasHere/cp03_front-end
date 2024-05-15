@@ -58,27 +58,31 @@
 
         form.addEventListener("submit", (e) => {
             e.preventDefault();
-        
+            
+            const prompt = message.value;
+
+            const messageElementDiv = document.createElement("div");
+            messageElementDiv.classList.add("message");
+            messageElementDiv.classList.add("message--sent");
+            messageElementDiv.innerHTML = `<div class="message__text">${prompt}</div>`;
+
+            chatlog.appendChild(messageElementDiv);
+
+            const botElementDiv = document.createElement("div");
+                botElementDiv.classList.add("message");
+                botElementDiv.classList.add("message--received");
+                botElementDiv.innerHTML = `<div class="message__text">Thinkning...</div>`;
+
+                chatlog.appendChild(botElementDiv);
+
+            message.value = "";
+
             async function run() {
-                const prompt = message.value;
         
                 const result = await model.generateContent(prompt);
                 const response = await result.response;
                 const text = response.text();
-                console.log(text);
-                messages.push(prompt);
-            
-                message.value = "";
-            
-                console.log(messages);
-            
-                const messageElementDiv = document.createElement("div");
-                messageElementDiv.classList.add("message");
-                messageElementDiv.classList.add("message--sent");
-                messageElementDiv.innerHTML = `<div class="message__text">${prompt}</div>`;
-            
-                chatlog.appendChild(messageElementDiv);
-
+    
                 const botElementDiv = document.createElement("div");
                 botElementDiv.classList.add("message");
                 botElementDiv.classList.add("message--received");
