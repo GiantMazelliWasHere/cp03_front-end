@@ -41,62 +41,6 @@
           }
         }
     </script>
-    <script type="module">
-        import { GoogleGenerativeAI } from "@google/generative-ai";
-  
-        const API_KEY = "AIzaSyBTEr33cjlO6ex7pRL2AJFdALavVGS5oKo";
-  
-        const genAI = new GoogleGenerativeAI(API_KEY);
-  
-        const model = genAI.getGenerativeModel({ model: "gemini-pro"});
-
-        let messages = [];
-
-        const form = document.querySelector("form");
-        const message = document.getElementById("message");
-        const chatlog = document.getElementById("chat-log");
-
-        form.addEventListener("submit", (e) => {
-            e.preventDefault();
-            
-            const prompt = message.value;
-
-            const messageElementDiv = document.createElement("div");
-            messageElementDiv.classList.add("message");
-            messageElementDiv.classList.add("message--sent");
-            messageElementDiv.innerHTML = `<div class="message__text">${prompt}</div>`;
-
-            chatlog.appendChild(messageElementDiv);
-
-            const botElementDiv = document.createElement("div");
-                botElementDiv.classList.add("message");
-                botElementDiv.classList.add("message--received");
-                botElementDiv.innerHTML = `<div class="message__text">Thinkning...</div>`;
-
-                chatlog.appendChild(botElementDiv);
-
-            message.value = "";
-
-            async function run() {
-        
-                const result = await model.generateContent(prompt);
-                const response = await result.response;
-                const text = response.text();
-    
-                const botElementDiv = document.createElement("div");
-                botElementDiv.classList.add("message");
-                botElementDiv.classList.add("message--received");
-                botElementDiv.innerHTML = `<div class="message__text">${text}</div>`;
-
-                chatlog.appendChild(botElementDiv);
-            }
-
-            run();
-        
-        
-        })
-
- 
-    </script>
+    <script type="module" src="index.js"></script>
 </body>
 </html>
